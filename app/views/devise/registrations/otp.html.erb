@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="medium-6 medium-centered columns">
+    <h1 class="text-center">Verify your phone number</h1>
+
+    <p class="text-center">
+      <%= link_to "Didn't receive the message? Click here to try again", send_otp_path %>
+    </p>
+
+    <%= form_tag('/check-otp', method: :post) do |f| %>
+
+      <div class="field">
+	<%= text_field_tag :otp, nil, placeholder: 'Enter the 6-digit verification code', autofocus: true, required: true %>
+      </div>
+
+      <div class="actions">
+	<%= submit_tag "Submit", class: 'button' %>
+      </div>
+    <% end %>
+  </div>
+</div>

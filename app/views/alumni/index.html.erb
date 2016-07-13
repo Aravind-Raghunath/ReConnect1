@@ -1,0 +1,59 @@
+<div class="row">
+  <h1 class="text-center">Verified Registrations</h1>
+
+  <div class="text-center button-group">
+    <%= link_to 'All', alumni_path, class: 'button' %>
+    <%= link_to 'ME', alumni_path(branch: 'me'), class: 'button' %>
+    <%= link_to 'ECE', alumni_path(branch: 'ec'), class: 'button' %>
+    <%= link_to 'CSE', alumni_path(branch: 'cs'), class: 'button' %>
+    <%= link_to 'EEE', alumni_path(branch: 'ee'), class: 'button' %>
+    <%= link_to 'TE', alumni_path(branch: 'te'), class: 'button' %>
+    <%= link_to 'ISE', alumni_path(branch: 'is'), class: 'button' %>
+    <%= link_to 'CIV', alumni_path(branch: 'cv'), class: 'button' %>
+    <%= link_to 'MCA', alumni_path(branch: 'mca'), class: 'button' %>
+    <%= link_to 'SCS', alumni_path(branch: 'scs'), class: 'button' %>
+    <%= link_to 'MMD', alumni_path(branch: 'mmd'), class: 'button' %>
+  </div>
+
+  <hr>
+
+  <table id="alumni-verified-registrations">
+    <thead>
+      <td>
+	Sl. No.
+      </td>
+      <td>
+	Name
+      </td>
+      <td>
+	USN
+      </td>
+      <td>
+	Branch
+      </td>
+      <td>
+	Phone Number Verified at
+      </td>
+    </thead>
+    <tbody>
+      <% @alumni.each do |alumnus| %>
+	<tr>
+	  <td>
+	  </td>
+	  <td>
+	    <%= alumnus.name %>
+	  </td>
+	  <td>
+	    <%= alumnus.usn %>
+	  </td>
+	  <td>
+	    <%= alumnus.branch.upcase %>
+	  </td>
+	  <td>
+	    <%= alumnus.phone_number_verified_at.strftime('%l:%M %P %d %b') %>
+	  </td>
+	</tr>
+      <% end %>
+    </tbody>
+  </table>
+</div>

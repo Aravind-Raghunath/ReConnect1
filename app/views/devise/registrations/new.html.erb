@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="medium-6 medium-centered columns">
+    <h2 class="text-center">Register</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
+      <% if resource.errors.messages.any? %>
+	<div class="callout alert">
+	  <%= devise_error_messages! %>
+	</div>
+      <% end %>
+
+      <div class="field">
+	<%= f.label :name %>
+	<%= f.text_field :name, autofocus: true, placeholder: 'Name', required: true %>
+      </div>
+
+      <div class="field">
+	<%= f.label :email %>
+	<%= f.email_field :email, placeholder: 'Email', required: true %>
+      </div>
+
+      <div class="field">
+	<%= f.label :password %>
+	<% if @minimum_password_length %>
+	  <span><small><em>(<%= @minimum_password_length %> characters minimum)</em></small></span>
+	<% end %>
+	<%= f.password_field :password, autocomplete: "off", placeholder: 'Password', required: true %>
+      </div>
+
+      <div class="field">
+	<%= f.label :password_confirmation %>
+	<% if @minimum_password_length %>
+	<% end %>
+	<%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Password Confirmation', required: true %>
+      </div>
+
+      <div class="actions">
+	<%= f.submit "Sign up", class: 'button'  %>
+      </div>
+    <% end %>
+
+    <%= render "devise/shared/links" %>
+  </div>
+</div>

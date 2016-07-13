@@ -1,0 +1,15 @@
+<div class="nested-fields">
+  <div class="field">
+    <%= f.label :name %>
+    <%= f.text_field :name, placeholder: 'Name of the degree' %>
+  </div>
+  <div class="field">
+    <%= f.label :year_of_graduation %>
+    <%= f.text_field :year_of_graduation, placeholder: 'Year of graduation' %>
+  </div>
+  <div class="field">
+    <%= f.label :college_or_university %>
+    <%= f.text_field :college_or_university, placeholder: 'College or University' %>
+  </div>
+  <%= link_to_remove_association 'Remove academic degree', f, class: 'button alert' %>
+</div>

@@ -1,0 +1,106 @@
+<div class="row">
+  <div class="medium-6 medium-centered columns">
+    <h2 class="text-center">Account Settings</h2>
+
+    <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
+      <% if resource.errors.messages.any? %>
+	<div class="callout alert">
+	  <%= devise_error_messages! %>
+	</div>
+      <% end %>
+
+      <div class="field">
+	<%= f.label :name %>
+	<%= f.text_field :name, autofocus: true, placeholder: 'Name', required: true %>
+      </div>
+
+      <div class="field">
+	<%= f.label :email %>
+	<%= f.email_field :email, placeholder: 'Email', required: true %>
+      </div>
+
+      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+	<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
+      <% end %>
+
+      <div class="field">
+	<%= f.label :date_of_birth %>
+	<%= f.date_select :date_of_birth, start_year: 1980, end_year: 2005 %>
+      </div>
+
+      <div class="field">
+	<%= f.label :phone_number %>
+	<p><small><i>(Optional country code followed by 10 digits, e.g. +15555555555)</i></small></p>
+	<%= f.telephone_field :phone_number, placeholder: 'Phone Number', required: true %>
+      </div>
+
+      <div class="field">
+	<%= f.label :usn, 'University Seat Number' %>
+	<%= f.text_field :usn, placeholder: 'USN' %>
+      </div>
+
+      <div class="field">
+	<%= f.label :year_of_graduation %>
+	<%= f.text_field :year_of_graduation, placeholder: 'Year of passing', required: true %>
+      </div>
+
+      <div class="field">
+	<%= f.label :branch %>
+	<%= f.select :branch, grouped_options_for_select(branch_options, current_alumnus.branch), { prompt: 'Select a branch' }, required: true %>
+      </div>
+
+      <div class="field">
+	<%= f.label :location %>
+	<%= f.text_field :location, placeholder: 'Current Location' %>
+      </div>
+
+      <div class="field">
+	<%= f.label :date_of_marriage %>
+	<p><small><i>(leave blank if unwed)</i></small></p>
+	<%= f.date_select :date_of_marriage, start_year: 1980, end_year: 2020, prompt: true, include_blank: true %>
+      </div>
+
+      <div class="field">
+	<%= f.label :password %>
+	<p><small><i>(leave blank if you don't want to change it)</i></small></p>
+	<%= f.password_field :password, autocomplete: "off", placeholder: 'Password' %>
+      </div>
+
+      <div class="field">
+	<%= f.label :password_confirmation %>
+	<%= f.password_field :password_confirmation, autocomplete: "off", placeholder: 'Password Confirmation' %>
+      </div>
+
+      <div class="field">
+	<%= f.label :current_password %> <p><small><i>(we need your current password to confirm your changes)</i><small></p>
+	<%= f.password_field :current_password, autocomplete: "off", placeholder: 'Current Password', required: true %>
+      </div>
+
+      <hr>
+      <h3>Academic Degrees</h3>
+      <div id="academic-degrees">
+	<%= f.fields_for :academic_degrees do |academic_degree| %>
+	  <%= render 'academic_degree_fields', f: academic_degree %>
+	<% end %>
+	<div class="links">
+	  <%= link_to_add_association 'Add a degree', f, :academic_degrees, class: 'button secondary' %>
+	</div>
+      </div>
+      <hr>
+
+      <h3>Professional Experiences</h3>
+      <div id="professional-experiences">
+	<%= f.fields_for :professional_experiences do |professional_experience| %>
+	  <%= render 'professional_experience_fields', f: professional_experience %>
+	<% end %>
+	<div class="links">
+	  <%= link_to_add_association 'Add a professional experience', f, :professional_experiences, class: 'button secondary' %>
+	</div>
+      </div>
+      <hr>
+      <div class="actions">
+	<%= f.submit "Update", class: 'button' %>
+      </div>
+    <% end %>
+  </div>
+</div>

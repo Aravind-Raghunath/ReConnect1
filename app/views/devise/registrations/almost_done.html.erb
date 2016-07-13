@@ -1,0 +1,44 @@
+<div class="row">
+  <div class="small-10 small-centered columns">
+    <h4 class="text-center">Thank you for registering!</h4>
+
+    <p class="text-center">Please complete your profile below</p>
+  </div>
+</div>
+
+<div class="row">
+  <div class="medium-6 medium-centered columns">
+    <%= form_for(resource, as: resource_name, url: complete_profile_path, html: { method: :post }) do |f| %>
+      <% if resource.errors.messages.any? %>
+	<div class="callout alert">
+	  <%= devise_error_messages! %>
+	</div>
+      <% end %>
+
+      <div class="field">
+	<%= f.label :date_of_birth %>
+	<%= f.date_select :date_of_birth, start_year: 1980, end_year: 2005 %>
+      </div>
+
+      <div class="field">
+	<%= f.label :phone_number %>
+	<p><small><i>(Optional country code followed by 10 digits, e.g. +15555555555)</i></small></p>
+	<%= f.text_field :phone_number, placeholder: 'Phone Number', required: true %>
+      </div>
+
+      <div class="field">
+	<%= f.label :year_of_graduation %>
+	<%= f.text_field :year_of_graduation, placeholder: 'Year of Graduation', required: true %>
+      </div>
+
+      <div class="field">
+	<%= f.label :branch %>
+	<%= f.select :branch, grouped_options_for_select(branch_options), { prompt: 'Select a branch' }, required: true %>
+      </div>
+
+      <div class="actions">
+	<%= f.submit "Complete my profile", class: 'button' %>
+      </div>
+    <% end %>
+  </div>
+</div>

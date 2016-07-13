@@ -1,0 +1,29 @@
+<%= provide(:title, "Welcome") %>
+
+<div class="row">
+  <div class="small-8 small-centered columns">
+    <h1 class="text-center">ReConnect</h1>
+  </div>
+</div>
+
+<% if signed_in? %>
+
+  <div class="row">
+    <div class="small-10 small-centered columns">
+      <h4 class="text-center">Thank you for registering!</h4>
+    </div>
+  </div>
+
+<% else %>
+
+  <div class="row">
+    <div class="small-10 small-centered columns">
+      <div class="callout large">
+	<h3>Welcome to ReConnect</h3>
+	<p>The web portal for the alumni of BMSIT&amp;M</p>
+	<%= link_to 'Register Now', new_alumnus_registration_path %>
+      </div>
+    </div>
+  </div>
+
+<% end %>

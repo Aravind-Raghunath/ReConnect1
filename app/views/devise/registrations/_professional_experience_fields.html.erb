@@ -1,0 +1,11 @@
+<div class="nested-fields">
+  <div class="field">
+    <%= f.label :company_name %>
+    <%= f.text_field :company_name, placeholder: 'Company Name' %>
+  </div>
+  <div class="field">
+    <%= f.label :designation %>
+    <%= f.text_field :designation, placeholder: 'Designation' %>
+  </div>
+  <%= link_to_remove_association 'Remove professional experience', f, class: 'button alert' %>
+</div>

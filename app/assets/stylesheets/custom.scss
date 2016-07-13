@@ -1,0 +1,49 @@
+@import 'settings';
+.notice {
+  background-color: map-get($foundation-palette, success);
+}
+
+.top-bar {
+  margin-bottom: 1rem;
+  background-color: darken(map-get($foundation-palette, primary), 10%);
+  ul {
+    background-color: darken(map-get($foundation-palette, primary), 10%);
+    li {
+      a {
+	color: white;
+      }
+      &.brand {
+	font-size: 1.2rem;
+	font-weight: bold;
+      }
+    }
+  }
+}
+
+h1 {
+  margin: 1rem 0 1.5rem;
+}
+
+h2 {
+  margin: 1rem 0;
+}
+
+select {
+  height: 2.7rem;
+}
+
+table#alumni-verified-registrations {
+  tbody {
+    counter-reset: rowNumber;
+
+    tr:nth-child(n+1) {
+      counter-increment: rowNumber;
+
+      td:first-child::before {
+	content: counter(rowNumber);
+	min-width: 1em;
+	margin-right: 0.5em;
+      }
+    }
+  }
+}

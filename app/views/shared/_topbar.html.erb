@@ -1,0 +1,32 @@
+<div class="top-bar">
+  <div class="top-bar-left">
+    <ul class="menu">
+      <li class="brand">
+	<%= link_to 'ReConnect', root_path %>
+      </li>
+    </ul>
+  </div>
+  <div class="top-bar-right">
+    <ul class="menu">
+      <% if signed_in? %>
+	<li>
+	  <%= link_to 'Account Settings', edit_alumnus_registration_path %>
+	</li>
+	<li>
+	  <%= link_to 'Log Out', destroy_alumnus_session_path, method: :delete %>
+	</li>
+  <li>
+    <%= link_to 'New Post', new_post_path %>
+  </li>
+      <% else %>
+	<li>
+	  <%= link_to 'Register', new_alumnus_registration_path %>
+	</li>
+	<li>
+	  <%= link_to 'Sign In', new_alumnus_session_path %>
+	</li>
+
+      <% end %>
+    </ul>
+  </div>
+</div>

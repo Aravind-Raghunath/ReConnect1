@@ -1,0 +1,16 @@
+<p>
+  Hi <%= @email %>
+</p>
+
+<p>
+  We welcome you to the alumni portal. The entire portal is still under construction and will be up shortly, we will keep you updated.
+</p>
+
+<p>
+  Meanwhile, we request you to confirm and verify your account via <%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %>
+</p>
+
+<p>
+  Regards,<br>
+  Alumni Association
+</p>
