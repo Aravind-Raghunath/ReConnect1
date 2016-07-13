@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
-  resources:posts
+  resources :posts do
+    resources :comments
+  end
   #get 'posts/index'
   get 'posts/new'
   devise_for :alumni, controllers: {registrations: 'registrations'}
