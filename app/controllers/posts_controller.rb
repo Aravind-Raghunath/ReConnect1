@@ -1,18 +1,17 @@
 class PostsController < ApplicationController
-  skip_before_action:authenticate_alumnus!
-
+  skip_before_action :authenticate_alumnus!
 
   def index
     @posts = Post.all.order('created_at DESC')
   end
 
-
   def new
-    @post = Post.new
+    @post = @current_alumnus.posts.new
   end
 
   def create
     @post = Post.new(post_params)
+    @post.alumnus = current_alumnus
     if @post.save
       redirect_to @post
     else
@@ -21,7 +20,7 @@ class PostsController < ApplicationController
   end
 
   def show
-    @post=Post.find(params[:id])
+    @post = Post.find(params[:id])
   end
 
   def edit
@@ -30,7 +29,6 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-
     if @post.update(params[:post].permit(:title, :description))
       redirect_to @post
     else
@@ -42,12 +40,10 @@ class PostsController < ApplicationController
     @post = Post.find(params[:id])
     @post.destroy
     redirect_to posts_path
-
   end
 
   private
   def post_params
-    params.require(:post).permit(:title, :body)
+    params.require(:post).permit(:title, :body, :alumnus_id)
   end
-
 end

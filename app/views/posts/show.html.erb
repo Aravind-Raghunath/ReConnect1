@@ -1,6 +1,7 @@
 <div id="post_content">
   <h1 class="title">
-    <%= @post.title %>
+        <%= @post.title %>
+      </div>
   </h1>
   <p class="date">
     Submitted <%= time_ago_in_words(@post.created_at) %>
@@ -10,10 +11,20 @@
   <p class="body">
     <%= @post.body %>
   </p>
-  <div id="comments container">
-    <h2> <%= @post.comments.count %> Comments</h2>
-    <%= render @post.comments %>
-    <h3> Add a Comment:</h3>
-    <%= render "comments/form" %>
+  <div id="comments">
+    <h5> <%= @post.comments.count %> Comments</h5>
+    <div class= "col-md-6 col-md-offset-3">
+      <div class="row">
+        <div class="panel panel-default">
+          <div class= "panel-heading">
+            <%= render @post.comments %>
+          </div>
+          <div class= "panel-body">
+            <h4> Add a Comment:</h4>
+            <%= render "comments/form" %>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </div>
