@@ -1,28 +1,24 @@
-<div id="post_content">
-  <h1 class="title">
-        <%= @post.title %>
-      </div>
-  </h1>
-  <p class="date">
-    Submitted <%= time_ago_in_words(@post.created_at) %>
-    | <%= link_to "Edit", edit_post_path(@post) %>
-    | <%= link_to "Delete", post_path, method: :delete, data: { confirm:"Are you sure?" } %>
-  </p>
-  <p class="body">
-    <%= @post.body %>
-  </p>
-  <div id="comments">
-    <h5> <%= @post.comments.count %> Comments</h5>
-    <div class= "col-md-6 col-md-offset-3">
-      <div class="row">
-        <div class="panel panel-default">
-          <div class= "panel-heading">
-            <%= render @post.comments %>
-          </div>
-          <div class= "panel-body">
-            <h4> Add a Comment:</h4>
-            <%= render "comments/form" %>
-          </div>
+<div id="page_wrapper">
+  <div id="post_content">
+    <h1 class="title">
+          <%= @post.title %>
+        </div>
+    </h1>
+    <p class="date">
+      Submitted <%= time_ago_in_words(@post.created_at) %>
+      | <%= link_to "Edit", edit_post_path(@post) %>
+      | <%= link_to "Delete", post_path, method: :delete, data: { confirm:"Are you sure?" } %>
+    </p>
+    <p class="body">
+      <%= @post.body %>
+    </p>
+    <div id="comments">
+      <h5 id="nofcomments"> <%= @post.comments.count %> Comments</h5>
+      <div class= "col-md-6 col-md-offset-3">
+        <div class="row">
+          <%= render @post.comments %>
+          <h4> Add a Comment:</h4>
+          <%= render "comments/form" %>
         </div>
       </div>
     </div>

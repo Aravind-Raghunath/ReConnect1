@@ -1,11 +1,23 @@
 // Place all the styles related to the Comments controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
-@import "bootstrap-sprockets";
-@import "bootstrap";
-
-
-.nofcomments
+#nofcomments
 {
   text-decoration: underline;
+}
+.post_wrapper {
+  padding: 3em;
+  border-bottom: 1px solid #d6dce0;
+  .title {
+    margin: 0;
+    a {
+      font-weight: 500;
+      text-decoration: none;
+      color: #2a2f35;
+      font-size: 1.5em;
+      &:hover {
+        color: #147dc2;
+      }
+    }
+  }
 }
