@@ -6,7 +6,7 @@ class PostsController < ApplicationController
   end
 
   def new
-    @post = @current_alumnus.posts.new
+    @post = current_alumnus.posts.new
   end
 
   def create
@@ -29,7 +29,7 @@ class PostsController < ApplicationController
 
   def update
     @post = Post.find(params[:id])
-    if @post.update(params[:post].permit(:title, :description))
+    if @post.update(post_params)
       redirect_to @post
     else
       render 'edit'
